@@ -1,0 +1,33 @@
+==================
+Variable declaration
+==================
+
+number a
+string a
+bool a
+
+---
+
+(program
+  (variable_declaration
+    type: (primitive_type)
+    name: (identifier))
+  (variable_declaration
+    type: (primitive_type)
+    name: (identifier))
+  (variable_declaration
+    type: (primitive_type)
+    name: (identifier)))
+
+==================
+Variable definition
+==================
+
+a = 5
+
+---
+
+(program
+  (variable_definition
+    name: (identifier)
+    value: (number)))

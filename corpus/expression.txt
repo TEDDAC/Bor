@@ -1,0 +1,64 @@
+==================
+Binary expression
+==================
+
+2 + 3
+2 / 3
+2 * 3
+2 - 3
+
+---
+
+(program
+  (binary_expression
+    left: (number)
+    right: (number))
+  (binary_expression
+    left: (number)
+    right: (number))
+  (binary_expression
+    left: (number)
+    right: (number))
+  (binary_expression
+    left: (number)
+    right: (number)))
+
+==================
+Binary expression with variable
+==================
+
+a + b
+a / b
+a * b
+a - b
+
+---
+
+(program
+  (binary_expression
+    left: (identifier)
+    right: (identifier))
+  (binary_expression
+    left: (identifier)
+    right: (identifier))
+  (binary_expression
+    left: (identifier)
+    right: (identifier))
+  (binary_expression
+    left: (identifier)
+    right: (identifier)))
+
+==================
+Unary expression
+==================
+
+-5
+!variable
+
+---
+
+(program
+  (unary_expression
+    right: (number))
+  (unary_expression
+    right: (identifier)))
