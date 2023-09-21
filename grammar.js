@@ -109,7 +109,7 @@ module.exports = grammar({
 
     identifier: $ => /[a-zA-Z0-9]*[a-zA-Z]+[a-zA-Z0-9]*/,
 
-    number: $ => /\d+/,
+    number: $ => /\d+(.\d+)?/,
 
     string: $ => /".*"/,
   }
