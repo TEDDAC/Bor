@@ -20,7 +20,7 @@ func x() number {
 Function as block
 ==================
 
-func x() void {
+func x() number {
   2 + 3
   5 - 8
 }
@@ -39,3 +39,25 @@ func x() void {
       (binary_expression
         left: (number)
         right: (number)))))
+
+==================
+Function with parameter
+==================
+
+func x(number a, string b) {
+  
+}
+
+---
+
+(program
+  (function_definition
+    name: (identifier)
+    parameters: (parameter_list
+      (variable_declaration
+        type: (primitive_type)
+        name: (identifier))
+      (variable_declaration
+        type: (primitive_type)
+        name: (identifier)))
+    code: (block)))

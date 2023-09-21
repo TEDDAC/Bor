@@ -13,13 +13,13 @@ module.exports = grammar({
       'func',
       field('name', $.identifier),
       field('parameters', $.parameter_list),
-      field('type', $._type),
+      optional(field('type', $._type)),
       field('code', $.block)
     ),
 
     parameter_list: $ => seq(
       '(',
-       // TODO: parameters
+      optional(seq($.variable_declaration, optional(repeat(seq(',', $.variable_declaration))))),
       ')'
     ),
 
@@ -28,7 +28,6 @@ module.exports = grammar({
     ),
 
     primitive_type: $ => choice(
-      'void',
       'bool',
       'number',
       'string',
@@ -67,17 +66,24 @@ module.exports = grammar({
       field('value', $._expression)
     ),
 
-    unary_expression: $ => prec(3, choice(
+    unary_expression: $ => prec(4, choice(
       seq(field('operator','-'), field('right',$._expression)),
       seq(field('operator','!'), field('right',$.identifier)),
-      // ...
     )),
   
     binary_expression: $ => choice(
-      prec.left(2, seq(field('left',$._expression), field('operator','*'), field('right',$._expression))),
-      prec.left(2, seq(field('left',$._expression), field('operator','/'), field('right',$._expression))),
-      prec.left(1, seq(field('left',$._expression), field('operator','+'), field('right',$._expression))),
-      prec.left(1, seq(field('left',$._expression), field('operator','-'), field('right',$._expression))),
+      prec.left(3, seq(field('left',$._expression), field('operator','*'), field('right',$._expression))),
+      prec.left(3, seq(field('left',$._expression), field('operator','/'), field('right',$._expression))),
+      prec.left(2, seq(field('left',$._expression), field('operator','+'), field('right',$._expression))),
+      prec.left(2, seq(field('left',$._expression), field('operator','-'), field('right',$._expression))),
+      choice(
+        prec.left(1, seq(field('left',$._expression), field('operator','=='), field('right',$._expression))),
+        prec.left(1, seq(field('left',$._expression), field('operator','>='), field('right',$._expression))),
+        prec.left(1, seq(field('left',$._expression), field('operator','>'), field('right',$._expression))),
+        prec.left(1, seq(field('left',$._expression), field('operator','<'), field('right',$._expression))),
+        prec.left(1, seq(field('left',$._expression), field('operator','<='), field('right',$._expression))),
+        prec.left(1, seq(field('left',$._expression), field('operator','!='), field('right',$._expression)))
+      )
     ),
 
     identifier: $ => /[a-z]+/,
