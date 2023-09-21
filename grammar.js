@@ -106,16 +106,15 @@ module.exports = grammar({
       prec.left(3, seq(field('left',$._expression), field('operator','/'), field('right',$._expression))),
       prec.left(2, seq(field('left',$._expression), field('operator','+'), field('right',$._expression))),
       prec.left(2, seq(field('left',$._expression), field('operator','-'), field('right',$._expression))),
-      choice(
-        prec.left(1, seq(field('left',$._expression), field('operator','=='), field('right',$._expression))),
-        prec.left(1, seq(field('left',$._expression), field('operator','>='), field('right',$._expression))),
-        prec.left(1, seq(field('left',$._expression), field('operator','>'), field('right',$._expression))),
-        prec.left(1, seq(field('left',$._expression), field('operator','<'), field('right',$._expression))),
-        prec.left(1, seq(field('left',$._expression), field('operator','<='), field('right',$._expression))),
-        prec.left(1, seq(field('left',$._expression), field('operator','!='), field('right',$._expression))),
-        prec.left(1, seq(field('left',$.identifier), field('operator','+='), field('right',$._expression))),
-        prec.left(1, seq(field('left',$.identifier), field('operator','-='), field('right',$._expression)))
-      )
+      
+      prec.left(1, seq(field('left',$._expression), field('operator','=='), field('right',$._expression))),
+      prec.left(1, seq(field('left',$._expression), field('operator','>='), field('right',$._expression))),
+      prec.left(1, seq(field('left',$._expression), field('operator','>'), field('right',$._expression))),
+      prec.left(1, seq(field('left',$._expression), field('operator','<'), field('right',$._expression))),
+      prec.left(1, seq(field('left',$._expression), field('operator','<='), field('right',$._expression))),
+      prec.left(1, seq(field('left',$._expression), field('operator','!='), field('right',$._expression))),
+      prec.left(1, seq(field('left',$.identifier), field('operator','+='), field('right',$._expression))),
+      prec.left(1, seq(field('left',$.identifier), field('operator','-='), field('right',$._expression)))
     ),
 
     _parenthesis_expression: $ => seq(
