@@ -84,6 +84,8 @@ module.exports = grammar({
     unary_expression: $ => prec(4, choice(
       seq(field('operator','-'), field('right',$._expression)),
       seq(field('operator','!'), field('right',$.identifier)),
+      seq(field('left',$.identifier), field('operator','++')),
+      seq(field('left',$.identifier), field('operator','--'))
     )),
   
     binary_expression: $ => choice(
@@ -97,7 +99,9 @@ module.exports = grammar({
         prec.left(1, seq(field('left',$._expression), field('operator','>'), field('right',$._expression))),
         prec.left(1, seq(field('left',$._expression), field('operator','<'), field('right',$._expression))),
         prec.left(1, seq(field('left',$._expression), field('operator','<='), field('right',$._expression))),
-        prec.left(1, seq(field('left',$._expression), field('operator','!='), field('right',$._expression)))
+        prec.left(1, seq(field('left',$._expression), field('operator','!='), field('right',$._expression))),
+        prec.left(1, seq(field('left',$.identifier), field('operator','+='), field('right',$._expression))),
+        prec.left(1, seq(field('left',$.identifier), field('operator','-='), field('right',$._expression)))
       )
     ),
 

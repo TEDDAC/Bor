@@ -117,3 +117,22 @@ a != z
   (binary_expression
     left: (identifier)
     right: (identifier)))
+
+==================
+test expression
+==================
+
+a++
+a--
+a += 5
+a += z
+a -= 5
+
+---
+
+(program 
+  (unary_expression left: (identifier))
+  (unary_expression left: (identifier))
+  (binary_expression left: (identifier) right: (number))
+  (binary_expression left: (identifier) right: (identifier))
+  (binary_expression left: (identifier) right: (number)))
