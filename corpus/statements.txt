@@ -15,3 +15,27 @@ func x() number {
     type: (primitive_type)
     code: (block
       (return_statement (number)))))
+
+==================
+Function as block
+==================
+
+func x() void {
+  2 + 3
+  5 - 8
+}
+
+---
+
+(program
+  (function_definition
+    name: (identifier)
+    parameters: (parameter_list)
+    type: (primitive_type)
+    code: (block
+      (binary_expression
+        left: (number)
+        right: (number))
+      (binary_expression
+        left: (number)
+        right: (number)))))

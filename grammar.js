@@ -36,13 +36,8 @@ module.exports = grammar({
 
     block: $ => seq(
       '{',
-      repeat($._statement),
+      repeat($._expression),
       '}'
-    ),
-
-    _statement: $ => choice(
-      $.return_statement
-      // TODO: other kinds of statements
     ),
 
     return_statement: $ => seq(
@@ -53,14 +48,23 @@ module.exports = grammar({
     _expression: $ => choice(
       $.identifier,
       $.number,
+      $.string,
       $.unary_expression,
       $.binary_expression,
       $.variable_declaration,
+      $.variable_definition,
+      $.return_statement,
     ),
 
     variable_declaration: $ => seq(
       field('type', $.primitive_type),
       field('name', $.identifier)
+    ),
+
+    variable_definition: $ => seq(
+      choice(field('name', $.identifier), $.variable_declaration),
+      '=',
+      field('value', $._expression)
     ),
 
     unary_expression: $ => prec(3, choice(
@@ -78,6 +82,8 @@ module.exports = grammar({
 
     identifier: $ => /[a-z]+/,
 
-    number: $ => /\d+/
+    number: $ => /\d+/,
+
+    string: $ => /".*"/,
   }
 });

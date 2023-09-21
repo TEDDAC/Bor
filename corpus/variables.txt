@@ -31,3 +31,18 @@ a = 5
   (variable_definition
     name: (identifier)
     value: (number)))
+
+==================
+Variable declaration and definition
+==================
+
+number a = 5
+
+---
+
+(program
+  (variable_definition
+    (variable_declaration
+      type: (primitive_type)
+      name: (identifier))
+    value: (number)))
