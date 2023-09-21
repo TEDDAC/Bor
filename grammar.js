@@ -44,15 +44,30 @@ module.exports = grammar({
       $._expression,
     ),
 
+    if_statement: $ => seq(
+      'if',
+      field('condition', $._parenthesis_expression),
+      field('code', $.block)
+    ),
+
+    while_statement: $ => seq(
+      'while',
+      field('condition', $._parenthesis_expression),
+      field('code', $.block)
+    ),
+
     _expression: $ => choice(
       $.identifier,
       $.number,
       $.string,
       $.unary_expression,
       $.binary_expression,
+      $._parenthesis_expression,
       $.variable_declaration,
       $.variable_definition,
       $.return_statement,
+      $.if_statement,
+      $.while_statement,
     ),
 
     variable_declaration: $ => seq(
@@ -86,7 +101,13 @@ module.exports = grammar({
       )
     ),
 
-    identifier: $ => /[a-z]+/,
+    _parenthesis_expression: $ => seq(
+      '(',
+      $._expression,
+      ')'
+    ),
+
+    identifier: $ => /[a-zA-Z0-9]*[a-zA-Z]+[a-zA-Z0-9]*/,
 
     number: $ => /\d+/,
 

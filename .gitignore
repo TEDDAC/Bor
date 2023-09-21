@@ -150,3 +150,6 @@ bindings/
 src/
 binding.gyp
 Cargo.toml
+parser.exp
+parser.lib
+parser.obj

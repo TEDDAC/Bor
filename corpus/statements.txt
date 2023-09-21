@@ -61,3 +61,55 @@ func x(number a, string b) {
         type: (primitive_type)
         name: (identifier)))
     code: (block)))
+
+
+==================
+if statement
+==================
+
+if(5 == 2){
+  5
+}
+
+---
+
+(program
+  (if_statement
+    condition: (binary_expression left: (number) right: (number))
+    code: (block (number))
+  )
+)
+
+==================
+if statement bool
+==================
+
+if(isTrue){
+  5
+}
+
+---
+
+(program
+  (if_statement
+    condition: (identifier)
+    code: (block (number))
+  )
+)
+
+==================
+while statement
+==================
+
+while(a < 5){
+  5
+}
+
+---
+
+(program
+  (while_statement
+    condition: (binary_expression left: (identifier) right: (number))
+    code: (block (number))
+  )
+)

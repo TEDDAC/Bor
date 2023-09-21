@@ -27,12 +27,23 @@ Binary expression
 Complexe binary expression
 ==================
 
-
+2 + 3 * 4
+3 * 4 + 2
+3 * (4 + 2)
 
 ---
 
 (program
-  )
+  (binary_expression 
+    left: (number) 
+    right: (binary_expression left: (number) right: (number)))
+  (binary_expression 
+    left: (binary_expression left: (number) right: (number)) 
+    right: (number))
+  (binary_expression 
+    left: (number) 
+    right: (binary_expression left: (number) right: (number)))
+)
 
 ==================
 Binary expression with variable
