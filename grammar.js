@@ -6,7 +6,6 @@ module.exports = grammar({
 
     _definition: $ => choice(
       $.function_definition,
-      // TODO: other kinds of definitions
     ),
 
     function_definition: $ => seq(
@@ -72,6 +71,7 @@ module.exports = grammar({
       $.identifier,
       $.number,
       $.string,
+      $.bool,
       $.unary_expression,
       $.binary_expression,
       $._parenthesis_expression,
@@ -129,5 +129,7 @@ module.exports = grammar({
     number: $ => /\d+(.\d+)?/,
 
     string: $ => /".*"/,
+
+    bool: $ => choice('true', 'false')
   }
 });

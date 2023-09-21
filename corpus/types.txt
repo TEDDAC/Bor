@@ -21,3 +21,16 @@ Number
 (program
   (number)
   (number))
+
+==================
+Bool
+==================
+
+true
+false
+
+---
+
+(program
+  (bool)
+  (bool))
