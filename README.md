@@ -1,4 +1,4 @@
-# Boring Programming Langage Parser
+# Bor Programming Langage Parser
 
 This is the repo for the parser of the Boring Programming Langage.
 
