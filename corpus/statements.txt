@@ -113,3 +113,22 @@ while(a < 5){
     code: (block (number))
   )
 )
+
+==================
+For statement
+==================
+
+for(a = 0; a < 5; i++){
+  5
+}
+
+---
+
+(program
+  (for_statement
+    initialization: (variable_definition name: (identifier) value: (number))
+    condition: (binary_expression left: (identifier) right: (number))
+    step: (unary_expression left: (identifier))
+    code: (block (number))
+  )
+)

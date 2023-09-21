@@ -56,6 +56,18 @@ module.exports = grammar({
       field('code', $.block)
     ),
 
+    for_statement: $ => seq(
+      'for',
+      '(',
+      field('initialization', $._expression),
+      ';',
+      field('condition', $._expression),
+      ';',
+      field('step', $._expression),
+      ')',
+      field('code', $.block)
+    ),
+
     _expression: $ => choice(
       $.identifier,
       $.number,
@@ -68,6 +80,7 @@ module.exports = grammar({
       $.return_statement,
       $.if_statement,
       $.while_statement,
+      $.for_statement,
     ),
 
     variable_declaration: $ => seq(
