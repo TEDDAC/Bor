@@ -1,5 +1,5 @@
 module.exports = grammar({
-  name: 'BORING_PROGRAMMING_LANGAGE',
+  name: 'BOR_PROGRAMMING_LANGAGE',
 
   rules: {
     program: $ => repeat(choice($._definition, $._expression)),
