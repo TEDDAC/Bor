@@ -3,13 +3,46 @@ Binary expression
 ==================
 
 2 + 3
-2 / 3
-2 * 3
+2 / 3.5
+28 * 3
 2 - 3
 
 ---
 
 (program
+  (binary_expression
+    left: (number)
+    right: (number))
+  (binary_expression
+    left: (number)
+    right: (number))
+  (binary_expression
+    left: (number)
+    right: (number))
+  (binary_expression
+    left: (number)
+    right: (number)))
+
+==================
+Binary expression Without Space
+==================
+
+2+ 3
+28 /3.5
+28 -3.5
+28 +3.5
+2*3
+2-3
+
+---
+
+(program
+  (binary_expression
+    left: (number)
+    right: (number))
+  (binary_expression
+    left: (number)
+    right: (number))
   (binary_expression
     left: (number)
     right: (number))
@@ -119,7 +152,7 @@ a != z
     right: (identifier)))
 
 ==================
-test expression
+inc expression
 ==================
 
 a++

@@ -44,7 +44,7 @@ func x() number {
 Function with parameter
 ==================
 
-func x(number a, string b) {
+func x (number a, string b) {
   
 }
 

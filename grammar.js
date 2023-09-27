@@ -1,5 +1,5 @@
 module.exports = grammar({
-  name: 'BOR_PROGRAMMING_LANGAGE',
+  name: 'bor',
 
   rules: {
     program: $ => repeat(choice($._definition, $._expression)),
@@ -123,9 +123,9 @@ module.exports = grammar({
       ')'
     ),
 
-    identifier: $ => /[a-zA-Z0-9]*[a-zA-Z]+[a-zA-Z0-9]*/,
+    identifier: $ => /[a-zA-Z0-9_-]*[a-zA-Z_]+[a-zA-Z0-9_]*/,
 
-    number: $ => /\d+(.\d+)?/,
+    number: $ => /[0-9]+(\.[0-9]+)?/,
 
     string: $ => /".*"/,
 

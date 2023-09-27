@@ -46,3 +46,24 @@ number a = 5
       type: (primitive_type)
       name: (identifier))
     value: (number)))
+
+==================
+Variable naming
+==================
+
+number a561a
+number 516a4564
+number 45a1a_6541
+
+---
+
+(program
+  (variable_declaration
+      type: (primitive_type)
+      name: (identifier))
+  (variable_declaration
+      type: (primitive_type)
+      name: (identifier))
+  (variable_declaration
+      type: (primitive_type)
+      name: (identifier)))
